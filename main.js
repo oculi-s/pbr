@@ -28,7 +28,7 @@ if (code) {
             $('input').oninput = e => {
                 let name = e.target.value.toUpperCase();
                 $$('tr').forEach(tr => {
-                    if (!tr.id.startsWith(name) && !tr.name.startsWith(name)) {
+                    if (!tr.id.startsWith(name) && !tr.name.includes(name)) {
                         tr.classList.add('d');
                     } else {
                         tr.classList.remove('d');
