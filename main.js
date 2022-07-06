@@ -50,10 +50,10 @@ function move(d) {
         let tr = $('tr:not(.d)');
         if (tr) {
             par.set('code', tr.id);
-        } else if (d[v] != undefined) {
-            par.set('code', d[v]);
-        } else if (Object.values(d).includes(v)) {
-            par.set('code', v);
+        } else if (d[name] != undefined) {
+            par.set('code', d[name]);
+        } else if (Object.values(d).includes(name)) {
+            par.set('code', name);
         }
         location.href = location.pathname + '?' + par.toString();
     }
