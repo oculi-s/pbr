@@ -31,6 +31,7 @@ if (code) {
     searchBox.oninput = search;
 }
 searchBox.onkeyup = move;
+searchBox.focus();
 
 function search(e) {
     let name = event.target.value.toUpperCase();
