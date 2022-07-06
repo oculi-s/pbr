@@ -10,14 +10,17 @@ var code = par.get('code');
 HTMLElement.prototype.$ = HTMLElement.prototype.querySelector;
 HTMLElement.prototype.$$ = HTMLElement.prototype.querySelectorAll;
 
+const imgs = $$('img');
+
 fetch('code.json')
     .then(r => r.json())
     .then(r => {
         if (code) {
-            var per = `http://cdn.fnguide.com/SVO2/chartImg/01_06/PER_A${code}_D_01_06.png`;
-            var pbr = `http://cdn.fnguide.com/SVO2/chartImg/01_06/PBR_A${code}_D_01_06.png`;
-            body.innerHTML += `<img src=${per}><img src=${pbr}>`;
+            tbody.classList.add('d');
+            imgs[0].src = `http://cdn.fnguide.com/SVO2/chartImg/01_06/PER_A${code}_D_01_06.png`;
+            imgs[1].src = `http://cdn.fnguide.com/SVO2/chartImg/01_06/PBR_A${code}_D_01_06.png`;
         } else {
+            tbody.classList.remove('d');
             let k = Object.keys(r).sort();
             k.forEach(name => {
                 let tr = document.createElement('tr');
