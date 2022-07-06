@@ -55,6 +55,6 @@ function move(d) {
         } else if (Object.values(d).includes(name)) {
             par.set('code', name);
         }
-        location.href = location.pathname + '?' + par.toString();
+        location.search = par.toString();
     }
 }
