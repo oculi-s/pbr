@@ -5,7 +5,7 @@ var par = u.searchParams;
 par.set('d1', '20120101');
 var type = $$('[name=type]');
 var sel = $('select');
-var img = $('img');
+var img = $('iframe');
 
 var dtype = { 'fdtr': 'interest-rate', 'cpi+yoy': 'inflation-rate' };
 
