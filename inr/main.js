@@ -5,7 +5,6 @@ var par = u.searchParams;
 par.set('d1', '20120101');
 var type = $$('[name=type]');
 var sel = $('select');
-var img = $('iframe');
 
 var dtype = { 'fdtr': 'interest-rate', 'cpi+yoy': 'inflation-rate' };
 
@@ -37,5 +36,8 @@ for (let x in country) {
 
 sel.onchange = e => {
     par.set('url2', `/${sel.value}/${dtype[$('[name=type]:checked').value]}`);
-    img.src = u;
+    var frame = $('iframe');
+    var nframe = document.createElement('iframe');
+    nframe.src = u;
+    frame.replaceWith(nframe);
 }
