@@ -1,6 +1,4 @@
 import { $, $$ } from '/pbr/common/com.js';
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 
 const u = new URL('https://d3fy651gv2fhd3.cloudfront.net/embed/');
 var par = u.searchParams;
