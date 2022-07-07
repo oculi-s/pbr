@@ -9,10 +9,15 @@ nav{
 
 iframe{
     border: none;
+    width: 50%;
+    height: 300px;
 }
 
 @media screen and (max-width:768px) {
     table{
+        width: 100%;
+    }
+    iframe{
         width: 100%;
     }
 }

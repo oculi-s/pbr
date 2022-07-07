@@ -9,7 +9,7 @@ var sel = $('select');
 var dtype = { 'fdtr': 'interest-rate', 'cpi+yoy': 'inflation-cpi' };
 
 type.forEach(e => {
-    e.onchange = e => {
+    e.onselect = e => {
         par.set('s', e.target.value);
     }
 });
@@ -34,7 +34,7 @@ for (let x in country) {
     sel.append(opt);
 }
 
-sel.onchange = e => {
+sel.onselect = e => {
     par.set('url2', `/${sel.value}/${dtype[$('[name=type]:checked').value]}`);
     var frame = $('iframe');
     var nframe = document.createElement('iframe');
