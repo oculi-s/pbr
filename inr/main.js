@@ -6,7 +6,7 @@ par.set('d1', '20120101');
 var type = $$('[name=type]');
 var sel = $('select');
 
-var dtype = { 'fdtr': 'interest-rate', 'cpi+yoy': 'inflation-rate' };
+var dtype = { 'fdtr': 'interest-rate', 'cpi+yoy': 'inflation-cpi' };
 
 type.forEach(e => {
     e.onchange = e => {
