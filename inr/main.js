@@ -7,9 +7,11 @@ var type = $$('[name=type]');
 var sel = $('select');
 var img = $('img');
 
+var dtype = { 'fdtr': 'interest-rate', 'cpi+yoy': 'inflation-rate' };
+
 type.forEach(e => {
     e.onchange = e => {
-        par.set('s',e.target.value);
+        par.set('s', e.target.value);
     }
 });
 
@@ -34,6 +36,6 @@ for (let x in country) {
 }
 
 sel.onchange = e => {
-    par.set('url2', sel.value);
+    par.set('url2', `/${sel.value}/${dtype[$('[name=type]:checked').value]}`);
     img.src = u;
 }
