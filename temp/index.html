@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+    <canvas></canvas>
+    <input type="range">
+    <script>
+        const $ = document.querySelector.bind(document);
+        var can = $('canvas');
+        var inp = $('input');
+        can.width = innerWidth;
+        can.height = innerHeight / 2;
+        var ctx = can.getContext('2d');
+        var o = {
+            x: can.width / 2,
+            y: can.height
+        };
+        var step = 5;
+        inp.setAttribute('min', 100);
+        inp.setAttribute('max', o.y);
+        inp.setAttribute('step', step);
+        inp.value = 100;
+
+        ctx.lineWidth = 1;
+        _init(ctx);
+        _draw(0);
+        inp.onchange = e => {
+            _clear(ctx, can);
+            _draw(e.target.value);
+        }
+
+        function _init(ctx) {
+            ctx.beginPath();
+            ctx.strokeStyle = '#ebebeb';
+            ctx.moveTo(0, o.y);
+            ctx.lineTo(o.x * 2, o.y);
+            ctx.moveTo(o.x, 0);
+            ctx.lineTo(o.x, o.y * 2);
+            ctx.stroke();
+        }
+
+        function _clear(ctx, can) {
+            ctx.clearRect(0, 0, can.width, can.height);
+            _init(ctx);
+        }
+
+        function _draw(v) {
+            var r = 0;
+            while (r < o.y) {
+                _outer(ctx, r + step, '#ebebeb');
+                _inner(ctx, r + step, '#ebebeb');
+                r += step;
+            }
+            ctx.beginPath();
+            ctx.strokeStyle = 'black';
+            ctx.arc(o.x, o.y - 300, 100, 0, 2 * Math.PI, false);
+            ctx.stroke();
+            _outer(ctx, v, 'black', 1);
+            _inner(ctx, v, 'black', 1);
+            _outer(ctx, -v, 'black', 1);
+            _inner(ctx, -v, 'black', 1);
+        }
+
+        function _outer(ctx, r, color = 'black', width = 1) {
+            if (r >= 100) {
+                var x = Math.sqrt(800 * r - 80000);
+                ctx.lineWidth = width;
+                ctx.strokeStyle = color;
+                ctx.beginPath();
+                ctx.arc(o.x - x, o.y - r, r, 0, 2 * Math.PI, false);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(o.x + x, o.y - r, r, 0, 2 * Math.PI, false);
+                ctx.stroke();
+            }
+        }
+
+        function _inner(ctx, r, color = 'black', width = 1) {
+            if (r >= 200) {
+                var x = Math.sqrt(400 * r - 80000);
+                ctx.lineWidth = width;
+                ctx.strokeStyle = color;
+                ctx.beginPath();
+                ctx.arc(o.x - x, o.y - r, r, 0, 2 * Math.PI, false);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(o.x + x, o.y - r, r, 0, 2 * Math.PI, false);
+                ctx.stroke();
+            }
+        }
+    </script>
+</body>
+
+</html>
